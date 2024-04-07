@@ -1,10 +1,10 @@
+import { useState } from "react";
 import useQuiosco from "../hooks/useQuiosco";
 import { formatearDinero } from "../helpers";
 
 export default function ModalProducto() {
-  //   const { handleClickModal } = useQuiosco();
-
   const { producto, handleClickModal } = useQuiosco();
+  const [cantidad, setCantidad] = useState(1);
   console.log(producto);
   return (
     <div className="gap-10 md:flex">
@@ -40,6 +40,55 @@ export default function ModalProducto() {
           {formatearDinero(producto.precio)}
         </p>
 
+        <div className="flex gap-4 mt-5">
+          <button
+            type="button"
+            onClick={() => {
+              // no puede ir a menos de 1
+              if (cantidad <= 1) return;
+              setCantidad(cantidad - 1);
+            }}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15 12H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+              />
+            </svg>
+          </button>
+          <p className="text-3xl">{cantidad}</p>
+          <button
+            type="button"
+            onClick={() => {
+              // no puede ir a más de 5
+              if (cantidad >= 5) return;
+              setCantidad(cantidad + 1);
+            }}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+              />
+            </svg>
+          </button>
+        </div>
         <button
           type="button"
           className="px-5 py-2 mt-5 font-bold text-white uppercase bg-indigo-600 rounded hover:bg-indigo-800"
