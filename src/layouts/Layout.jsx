@@ -6,6 +6,7 @@ import Modal from "react-modal";
 // components
 import Sidebar from "../components/Sidebar";
 import Resumen from "../components/Resumen";
+import ModalProducto from "../components/ModalProducto";
 // hooks
 import useQuiosco from "../hooks/useQuiosco";
 
@@ -35,8 +36,7 @@ export default function Layout() {
       </div>
 
       <Modal isOpen={modal} style={customStyles}>
-        <p>Desde modal</p>
-        <button onClick={handleClickModal}>Cerrar</button>
+        <ModalProducto />
       </Modal>
     </>
   );

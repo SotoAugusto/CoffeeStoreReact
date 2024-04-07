@@ -21,7 +21,7 @@ export default function Producto({ producto }) {
           className="w-full p-3 mt-5 font-bold text-white uppercase bg-indigo-600 rounded-md hover:bg-indigo-800"
           onClick={() => {
             handleClickModal();
-            handleSetProducto();
+            handleSetProducto(producto);
           }}
         >
           Agregar
